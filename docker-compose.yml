@@ -13,8 +13,8 @@ services:
             - ./routes:/var/www/routes
             - ./tests:/var/www/tests
             - ./storage:/var/www/storage
-            - ./composer.json:/var/www/composer.json:ro
-            - ./composer.lock:/var/www/composer.lock:ro
+            - ./composer.json:/var/www/composer.json
+            - ./composer.lock:/var/www/composer.lock
             - ./.env:/var/www/.env:ro
         depends_on:
             mariadb:
