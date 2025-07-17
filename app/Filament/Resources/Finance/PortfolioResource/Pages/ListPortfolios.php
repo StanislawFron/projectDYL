@@ -8,6 +8,7 @@ use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
+use App\Enums\Finance\TransactionType;
 
 class ListPortfolios extends ListRecords
 {
@@ -40,8 +41,17 @@ class ListPortfolios extends ListRecords
         return $table
             ->columns([
                 TextColumn::make('name')->label(__('Nazwa')),
-                TextColumn::make('contributions_netto')->label(__('Wpłaty netto')),
-                TextColumn::make('account_value')->label(__('Wartość konta')),
-            ]);
+                TextColumn::make('transactions_sum')
+                ->label(__('Wpłaty netto'))
+                ->getStateUsing(fn ($record) => $record->transactions()->where('type', TransactionType::DEPOSIT)->get()->sum(function ($transaction) {
+                    return $transaction->getValue();
+                }))
+                ->money('PLN'),
+                TextColumn::make('account_value')
+                ->label(__('Wartość konta'))
+                ->getStateUsing(fn ($record) => $record->getValue())
+                ->money('PLN'),
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 }
