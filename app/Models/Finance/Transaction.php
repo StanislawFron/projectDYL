@@ -2,9 +2,9 @@
 
 namespace App\Models\Finance;
 
+use App\Enums\Finance\TransactionType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Enums\Finance\TransactionType;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Transaction extends Model
@@ -23,7 +23,7 @@ class Transaction extends Model
     public function asset(): BelongsTo
     {
         return $this->belongsTo(Asset::class);
-    } 
+    }
 
     public function getValue(): float
     {

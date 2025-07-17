@@ -2,8 +2,8 @@
 
 namespace Database\Seeders\Finance;
 
-use App\Models\Finance\Transaction;
 use App\Enums\Finance\TransactionType;
+use App\Models\Finance\Transaction;
 use Illuminate\Database\Seeder;
 
 class TransactionSeeder extends Seeder

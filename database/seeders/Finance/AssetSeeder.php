@@ -2,8 +2,8 @@
 
 namespace Database\Seeders\Finance;
 
-use Illuminate\Database\Seeder;
 use App\Models\Finance\Asset;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 
 class AssetSeeder extends Seeder

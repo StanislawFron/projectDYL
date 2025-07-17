@@ -2,13 +2,13 @@
 
 namespace App\Filament\Resources\Finance\PortfolioResource\Pages;
 
+use App\Enums\Finance\TransactionType;
 use App\Filament\Resources\Finance\PortfolioResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Contracts\Support\Htmlable;
-use App\Enums\Finance\TransactionType;
 
 class ListPortfolios extends ListRecords
 {
@@ -42,15 +42,15 @@ class ListPortfolios extends ListRecords
             ->columns([
                 TextColumn::make('name')->label(__('Nazwa')),
                 TextColumn::make('transactions_sum')
-                ->label(__('Wpłaty netto'))
-                ->getStateUsing(fn ($record) => $record->transactions()->where('type', TransactionType::DEPOSIT)->get()->sum(function ($transaction) {
-                    return $transaction->getValue();
-                }))
-                ->money('PLN'),
+                    ->label(__('Wpłaty netto'))
+                    ->getStateUsing(fn ($record) => $record->transactions()->where('type', TransactionType::DEPOSIT)->get()->sum(function ($transaction) {
+                        return $transaction->getValue();
+                    }))
+                    ->money('PLN'),
                 TextColumn::make('account_value')
-                ->label(__('Wartość konta'))
-                ->getStateUsing(fn ($record) => $record->getValue())
-                ->money('PLN'),
+                    ->label(__('Wartość konta'))
+                    ->getStateUsing(fn ($record) => $record->getValue())
+                    ->money('PLN'),
             ])
             ->defaultSort('created_at', 'desc');
     }

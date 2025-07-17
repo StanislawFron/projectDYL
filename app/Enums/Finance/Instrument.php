@@ -4,7 +4,8 @@ namespace App\Enums\Finance;
 
 use Filament\Support\Contracts\HasLabel;
 
-enum Instrument: string implements HasLabel {
+enum Instrument: string implements HasLabel
+{
     case CURRENCY = 'currency';
     case STOCK = 'stock';
     case BOND = 'bond';
@@ -13,7 +14,7 @@ enum Instrument: string implements HasLabel {
 
     public function getLabel(): ?string
     {
-        return match($this){
+        return match ($this) {
             self::CURRENCY => __('Waluta'),
             self::STOCK => __('Akcje'),
             self::BOND => __('Obligacje'),

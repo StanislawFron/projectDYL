@@ -4,11 +4,11 @@ namespace Database\Factories\Finance;
 
 use App\Enums\Finance\Currency;
 use App\Enums\Finance\Instrument;
-use App\Models\Finance\Transaction;
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Enums\Finance\TransactionType;
 use App\Models\Finance\Asset;
 use App\Models\Finance\Portfolio;
+use App\Models\Finance\Transaction;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TransactionFactory extends Factory
 {

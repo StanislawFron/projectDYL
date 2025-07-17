@@ -13,7 +13,7 @@ return new class extends Migration
             $table->foreignId('portfolio_id')->constrained(table: 'finance_portfolios')->onDelete('cascade');
             $table->string('type', 32);
             $table->date('date');
-            $table->string('instrument',16);
+            $table->string('instrument', 16);
             $table->foreignId('asset_id')->constrained(table: 'finance_assets')->onDelete('cascade');
             $table->string('name');
             $table->char('currency', 3);

@@ -4,7 +4,8 @@ namespace App\Enums\Finance;
 
 use Filament\Support\Contracts\HasLabel;
 
-enum TransactionType: string implements HasLabel {
+enum TransactionType: string implements HasLabel
+{
     case BUY = 'buy';
     case SELL = 'sell';
     case DEPOSIT = 'deposit';
@@ -14,7 +15,7 @@ enum TransactionType: string implements HasLabel {
 
     public function getLabel(): ?string
     {
-        return match($this){
+        return match ($this) {
             self::BUY => __('Zakup'),
             self::SELL => __('Sprzedaż'),
             self::DEPOSIT => __('Wpłata'),

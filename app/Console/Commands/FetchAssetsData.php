@@ -2,15 +2,14 @@
 
 namespace App\Console\Commands;
 
-use Illuminate\Console\Command;
 use App\Models\Finance\Asset;
+use Illuminate\Console\Command;
 
 class FetchAssetsData extends Command
 {
     protected $signature = 'finances:fetch-assets-data';
 
     protected $description = 'Fetch assets data from external API';
-
 
     public function handle()
     {

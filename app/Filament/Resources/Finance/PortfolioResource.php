@@ -13,17 +13,19 @@ use Filament\Resources\Resource;
 class PortfolioResource extends Resource
 {
     protected static ?string $model = Portfolio::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-wallet';
+
     protected static ?int $navigationSort = 1;
 
     public static function getBreadcrumb(): string
     {
-        return  __('Portfolio');
+        return __('Portfolio');
     }
 
     public static function getNavigationLabel(): string
     {
-        return  __('Portfolio');
+        return __('Portfolio');
     }
 
     public static function getNavigationGroup(): ?string
@@ -38,7 +40,7 @@ class PortfolioResource extends Resource
             'create' => CreatePortfolio::route('/create'),
             'view' => ViewPortfolio::route('/{record}'),
             'edit' => EditPortfolio::route('/{record}/edit'),
-            ];
+        ];
     }
 
     public static function getRelations(): array
