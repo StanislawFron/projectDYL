@@ -1,2 +1,5 @@
 #!/bin/sh
 docker exec projectdyl-app sh -c "prettier resources --write && ./vendor/bin/pint"
+git add .
+echo "Automatically adding formatting changes to commit"
+exit 0
