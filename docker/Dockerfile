@@ -1,13 +1,7 @@
-FROM node:20-alpine AS frontend
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-
-FROM php:8.3-fpm
+FROM php:8.3-fpm AS app
 WORKDIR /var/www
 
+# Instalacja zależności systemowych
 RUN apt-get update && apt-get install -y \
     curl \
     git \
@@ -19,32 +13,40 @@ RUN apt-get update && apt-get install -y \
     netcat-openbsd \
     gnupg \
     ca-certificates \
-    build-essential \
-    && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
+    build-essential
+
+# Instalacja Node.js (poprawiona składnia)
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs \
-    && docker-php-ext-configure zip \
+    && npm install -g prettier
+
+# Instalacja rozszerzeń PHP (osobny krok)
+RUN docker-php-ext-configure zip \
     && docker-php-ext-install pdo pdo_mysql zip intl
 
+# Instalacja Composer
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
 
+# Kopiowanie i instalacja zależności PHP
 COPY composer.json composer.lock ./
 RUN composer install --prefer-dist --no-scripts --no-dev --no-interaction --optimize-autoloader
 
+# Kopiowanie i instalacja zależności Node.js
 COPY package*.json ./
-RUN npm install && \
-    npm install --save-dev husky lint-staged prettier
+RUN npm install
 
-RUN npx husky install && \
-    npx husky add .husky/pre-commit "npx lint-staged && ./vendor/bin/pint"
-
+# Kopiowanie reszty aplikacji
 COPY . .
 
-COPY --from=frontend /app/public/build ./public/build
+# Budowa frontendu
+RUN npm run build
 
+# Optymalizacja i uprawnienia
 RUN composer dump-autoload --optimize && \
     chown -R www-data:www-data storage
 
+# Entrypoint
 COPY docker/app-entrypoint.sh /usr/local/bin/app-entrypoint.sh
 RUN chmod +x /usr/local/bin/app-entrypoint.sh
 

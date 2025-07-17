@@ -25,12 +25,12 @@ class PortfolioResource extends Resource
 
     public static function getNavigationLabel(): string
     {
-        return __('Portfolio');
+        return  __('Portfolio');
     }
 
     public static function getNavigationGroup(): ?string
     {
-        return __('Finanse');
+        return  __('Finanse');
     }
 
     public static function getPages(): array
