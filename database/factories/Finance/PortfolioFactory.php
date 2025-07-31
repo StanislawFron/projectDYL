@@ -3,6 +3,7 @@
 namespace Database\Factories\Finance;
 
 use App\Models\Finance\Portfolio;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PortfolioFactory extends Factory
@@ -13,7 +14,7 @@ class PortfolioFactory extends Factory
     {
         return [
             'name' => $this->faker->words(1, true),
-            'user_id' => 1,
+            'user_id' => User::factory(),
         ];
     }
 }

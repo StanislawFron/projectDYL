@@ -1,16 +1,19 @@
 <?php
 
 use App\Models\Finance\Portfolio;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
 test('Portfolio - list as user', function () {
     // Arrange
-    $user = \App\Models\User::factory()->create();
+    $user = User::factory()->create();
 
     // Act
-    $result = $this->actingAs($user)->get(route('filament.admin.resources.finance.portfolios.index'));
+    $result = $this->actingAs($user)->get(
+        route('filament.admin.resources.finance.portfolios.index')
+    );
 
     // Assert
     $result->assertOk();
@@ -18,15 +21,15 @@ test('Portfolio - list as user', function () {
 
 test('Portfolio - factory create', function () {
     // Arrange
-    $portfolioFactory = Portfolio::factory();
+    $portfolio = Portfolio::factory()->create();
 
     // Act
-    $portfolio = $portfolioFactory->create();
-
-    // Assert
-    $this->assertDatabaseHas('finance_portfolios', [
+    $result = [
         'id' => $portfolio->id,
         'name' => $portfolio->name,
         'user_id' => $portfolio->user_id,
-    ]);
+    ];
+
+    // Assert
+    $this->assertDatabaseHas('finance_portfolios', $result);
 });
