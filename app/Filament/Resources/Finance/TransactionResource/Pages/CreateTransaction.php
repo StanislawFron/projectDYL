@@ -5,7 +5,6 @@ namespace App\Filament\Resources\Finance\TransactionResource\Pages;
 use App\Enums\Finance\Instrument;
 use App\Enums\Finance\TransactionType;
 use App\Filament\Resources\Finance\TransactionResource;
-use App\Models\Finance\Portfolio;
 use Carbon\Carbon;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Grid;
@@ -86,6 +85,7 @@ class CreateTransaction extends CreateRecord
         $data['currency'] = 'PLN';
         $data['name'] = 'KTY';
         $data['portfolio_id'] = 1;
+
         return $data;
     }
 }

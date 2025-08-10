@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+docker exec projectdyl-app php artisan test tests/Unit tests/Feature tests/E2E
+docker exec projectdyl-app sh -c "prettier resources --write && ./vendor/bin/pint"
+git add .
+echo "Automatically adding formatting changes to commit"
+exit 0

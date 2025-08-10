@@ -15,8 +15,8 @@ class CreatePortfolio extends CreateRecord
     {
         return $form->schema([
             TextInput::make('name')
-            ->label('Nazwa')
-            ->required(),
+                ->label('Nazwa')
+                ->required(),
         ]);
     }
 

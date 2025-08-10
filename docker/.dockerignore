@@ -1,0 +1,11 @@
+node_modules
+vendor
+storage/logs
+.env
+.git
+*.log
+npm-debug.log
+docker
+.idea
+.github
+.gitattributes

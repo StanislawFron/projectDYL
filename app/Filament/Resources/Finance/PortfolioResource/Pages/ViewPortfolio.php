@@ -3,13 +3,10 @@
 namespace App\Filament\Resources\Finance\PortfolioResource\Pages;
 
 use App\Filament\Resources\Finance\PortfolioResource;
-use App\Filament\Resources\Finance\PortfolioResource\RelationManagers\TransactionsRelationManager;
 use App\Filament\Resources\Finance\TransactionResource;
-use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Infolist;
+use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;
-use Filament\Actions;
 
 class ViewPortfolio extends ViewRecord
 {
@@ -33,7 +30,7 @@ class ViewPortfolio extends ViewRecord
             Actions\CreateAction::make('createCategory')
                 ->label(__('Dodaj transakcje'))
                 ->icon('heroicon-o-plus')
-                ->url(fn() => TransactionResource::getUrl('create', ['portfolio_id' => $this->record->getKey()])),
+                ->url(fn () => TransactionResource::getUrl('create', ['portfolio_id' => $this->record->getKey()])),
         ];
     }
 
