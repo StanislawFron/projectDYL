@@ -8,6 +8,6 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
-Schedule::job('finances:fetch-assets-data')
+Schedule::command('finances:fetch-assets-data')
     ->everyFiveMinutes()
     ->timezone('Europe/Warsaw');
