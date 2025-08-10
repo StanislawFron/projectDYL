@@ -52,8 +52,6 @@ RUN npm install
 
 COPY . .
 
-RUN npm run build
-
 RUN composer dump-autoload --optimize && \
     chown -R www-data:www-data storage
 
@@ -64,4 +62,4 @@ COPY docker/app-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/app-entrypoint.sh
 
 ENTRYPOINT ["app-entrypoint.sh"]
-EXPOSE 8000
+EXPOSE 8000 5173
