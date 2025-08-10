@@ -42,22 +42,17 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
 
 COPY --from=composer:2.8 /usr/bin/composer /usr/bin/composer
 
-RUN mkdir -p /home/www-data/.npm && chown -R www-data:www-data /home/www-data
-RUN npm config set cache /home/www-data/.npm --global
-
 COPY --chown=www-data:www-data . /app
 
 COPY composer.json composer.lock ./
 RUN composer install --prefer-dist --no-scripts --no-dev --no-interaction --optimize-autoloader
 
-COPY --chown=www-data:www-data package*.json ./
-USER www-data
+COPY package*.json ./
 RUN npm install
-USER root
 
 COPY . .
 
-RUN chown -R www-data:www-data /app/node_modules /app/.vite-temp || true
+RUN npm run build
 
 RUN composer dump-autoload --optimize && \
     chown -R www-data:www-data storage
@@ -68,9 +63,5 @@ RUN composer require laravel/octane && \
 COPY docker/app-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/app-entrypoint.sh
 
-RUN chown -R www-data:www-data /app/public
-
-USER www-data
-
 ENTRYPOINT ["app-entrypoint.sh"]
-EXPOSE 8000 5173
+EXPOSE 8000
