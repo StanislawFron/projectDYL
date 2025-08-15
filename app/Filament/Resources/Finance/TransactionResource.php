@@ -2,28 +2,26 @@
 
 namespace App\Filament\Resources\Finance;
 
-use Filament\Schemas\Schema;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Finance\TransactionResource\Pages\ListTransactions;
 use App\Filament\Resources\Finance\TransactionResource\Pages\CreateTransaction;
 use App\Filament\Resources\Finance\TransactionResource\Pages\EditTransaction;
-use App\Filament\Resources\Finance;
+use App\Filament\Resources\Finance\TransactionResource\Pages\ListTransactions;
 use App\Models\Finance\Transaction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
 use Filament\Tables\Table;
 
 class TransactionResource extends Resource
 {
     protected static ?string $model = Transaction::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static string | \UnitEnum | null $navigationGroup = 'Portfolio';
+    protected static string|\UnitEnum|null $navigationGroup = 'Portfolio';
 
     public static function form(Schema $schema): Schema
     {

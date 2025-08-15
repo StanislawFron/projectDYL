@@ -14,7 +14,7 @@ class PortfolioResource extends Resource
 {
     protected static ?string $model = Portfolio::class;
 
-    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-wallet';
+    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-wallet';
 
     protected static ?int $navigationSort = 1;
 

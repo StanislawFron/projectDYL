@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Finance\TransactionResource\Pages;
 
-use Filament\Actions\DeleteAction;
 use App\Filament\Resources\Finance\TransactionResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditTransaction extends EditRecord

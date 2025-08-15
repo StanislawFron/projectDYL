@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Finance\TransactionResource\Pages;
 
-use Filament\Actions\CreateAction;
 use App\Filament\Resources\Finance\TransactionResource;
-use Filament\Actions;
+use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListTransactions extends ListRecords
