@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\Resources\Finance\PortfolioResource\Pages;
+namespace App\Filament\Resources\Finance\Portfolios\Pages;
 
-use App\Filament\Resources\Finance\PortfolioResource;
-use App\Filament\Resources\Finance\TransactionResource;
+use App\Filament\Resources\Finance\Portfolios\PortfolioResource;
+use App\Filament\Resources\Finance\Transactions\TransactionResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;

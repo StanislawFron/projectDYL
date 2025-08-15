@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Finance\PortfolioResource\RelationManagers;
+namespace App\Filament\Resources\Finance\Portfolios\RelationManagers;
 
 use Filament\Actions\CreateAction;
 use Filament\Resources\RelationManagers\RelationManager;

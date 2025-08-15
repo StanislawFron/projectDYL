@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Filament\Resources\Finance;
+namespace App\Filament\Resources\Finance\Portfolios;
 
-use App\Filament\Resources\Finance\PortfolioResource\Pages\CreatePortfolio;
-use App\Filament\Resources\Finance\PortfolioResource\Pages\EditPortfolio;
-use App\Filament\Resources\Finance\PortfolioResource\Pages\ListPortfolios;
-use App\Filament\Resources\Finance\PortfolioResource\Pages\ViewPortfolio;
-use App\Filament\Resources\Finance\PortfolioResource\RelationManagers\TransactionsRelationManager;
+use App\Filament\Resources\Finance\Portfolios\Pages\CreatePortfolio;
+use App\Filament\Resources\Finance\Portfolios\Pages\EditPortfolio;
+use App\Filament\Resources\Finance\Portfolios\Pages\ListPortfolios;
+use App\Filament\Resources\Finance\Portfolios\Pages\ViewPortfolio;
+use App\Filament\Resources\Finance\Portfolios\RelationManagers\TransactionsRelationManager;
 use App\Models\Finance\Portfolio;
 use Filament\Resources\Resource;
 

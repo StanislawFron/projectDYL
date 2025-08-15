@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Finance\TransactionResource\Pages;
+namespace App\Filament\Resources\Finance\Transactions\Pages;
 
 use App\Enums\Finance\Instrument;
 use App\Enums\Finance\TransactionType;
-use App\Filament\Resources\Finance\TransactionResource;
+use App\Filament\Resources\Finance\Transactions\TransactionResource;
 use Carbon\Carbon;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;

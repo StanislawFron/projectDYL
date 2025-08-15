@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\Resources\Finance;
+namespace App\Filament\Resources\Finance\Transactions;
 
-use App\Filament\Resources\Finance\TransactionResource\Pages\CreateTransaction;
-use App\Filament\Resources\Finance\TransactionResource\Pages\EditTransaction;
-use App\Filament\Resources\Finance\TransactionResource\Pages\ListTransactions;
+use App\Filament\Resources\Finance\Transactions\Pages\CreateTransaction;
+use App\Filament\Resources\Finance\Transactions\Pages\EditTransaction;
+use App\Filament\Resources\Finance\Transactions\Pages\ListTransactions;
 use App\Models\Finance\Transaction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Finance\PortfolioResource\Pages;
+namespace App\Filament\Resources\Finance\Portfolios\Pages;
 
-use App\Filament\Resources\Finance\PortfolioResource;
+use App\Filament\Resources\Finance\Portfolios\PortfolioResource;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Pages\CreateRecord;
 use Filament\Schemas\Schema;
