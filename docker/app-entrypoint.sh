@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-until mysql -h mariadb -uroot -p"$MYSQL_ROOT_PASSWORD" -e "SELECT 1" "$MYSQL_DATABASE" >/dev/null 2>&1; do
-  echo "Waiting for database..."
-  sleep 3
+until nc -z mariadb 3306; do
+    echo "Waiting for database..."
+    sleep 3
 done
 
 if [ "$APP_DATABASE_ENV" = "local" ]; then
