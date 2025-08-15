@@ -10,8 +10,6 @@ use Illuminate\Contracts\Support\Htmlable;
 
 class ViewPortfolio extends ViewRecord
 {
-    protected string $view = 'filament.resources.portfolio.pages.view-portfolio';
-
     protected static string $resource = PortfolioResource::class;
 
     public function getBreadcrumb(): string
