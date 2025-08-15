@@ -2,18 +2,18 @@
 
 namespace App\Filament\Resources\Finance\PortfolioResource\Pages;
 
+use Filament\Schemas\Schema;
 use App\Filament\Resources\Finance\PortfolioResource;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreatePortfolio extends CreateRecord
 {
     protected static string $resource = PortfolioResource::class;
 
-    public function Form(Form $form): Form
+    public function Form(Schema $schema): Schema
     {
-        return $form->schema([
+        return $schema->components([
             TextInput::make('name')
                 ->label('Nazwa')
                 ->required(),

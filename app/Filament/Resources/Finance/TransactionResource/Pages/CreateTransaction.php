@@ -2,25 +2,25 @@
 
 namespace App\Filament\Resources\Finance\TransactionResource\Pages;
 
+use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Grid;
 use App\Enums\Finance\Instrument;
 use App\Enums\Finance\TransactionType;
 use App\Filament\Resources\Finance\TransactionResource;
 use Carbon\Carbon;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateTransaction extends CreateRecord
 {
     protected static string $resource = TransactionResource::class;
 
-    public function Form(Form $form): Form
+    public function Form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Grid::make(1)->schema([
                     Grid::make()->schema([
                         Select::make('type')

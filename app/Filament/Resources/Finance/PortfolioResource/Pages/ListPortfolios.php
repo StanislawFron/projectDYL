@@ -2,6 +2,9 @@
 
 namespace App\Filament\Resources\Finance\PortfolioResource\Pages;
 
+use Filament\Actions\CreateAction;
+use App\Filament\Resources\Finance\PortfolioResource\Widgets\TotalProfit;
+use App\Filament\Resources\Finance\PortfolioResource\Widgets\DailyProfit;
 use App\Enums\Finance\TransactionType;
 use App\Filament\Resources\Finance\PortfolioResource;
 use Filament\Actions;
@@ -14,7 +17,7 @@ class ListPortfolios extends ListRecords
 {
     protected static string $resource = PortfolioResource::class;
 
-    protected static string $view = 'filament.resources.portfolio.pages.list-portfolio';
+    protected string $view = 'filament.resources.portfolio.pages.list-portfolio';
 
     public function getHeading(): string|Htmlable
     {
@@ -24,15 +27,15 @@ class ListPortfolios extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            CreateAction::make(),
         ];
     }
 
     protected function getHeaderWidgets(): array
     {
         return [
-            PortfolioResource\Widgets\TotalProfit::class,
-            PortfolioResource\Widgets\DailyProfit::class,
+            TotalProfit::class,
+            DailyProfit::class,
         ];
     }
 

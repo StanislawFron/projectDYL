@@ -24,6 +24,9 @@ services:
             - ./composer.lock:/app/composer.lock
             - ./.env:/app/.env:ro
             - ./.githooks:/app/.githooks:ro
+            - ./vendor:/app/vendor
+            - ./public:/app/public
+            - ./node_modules:/app/node_modules
         depends_on:
             mariadb:
                 condition: service_healthy

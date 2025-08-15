@@ -52,11 +52,10 @@ RUN npm install
 
 COPY . .
 
+RUN php artisan octane:install --server=frankenphp
+
 RUN composer dump-autoload --optimize && \
     chown -R www-data:www-data storage
-
-RUN composer require laravel/octane && \
-    php artisan octane:install --server=frankenphp
 
 COPY docker/app-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/app-entrypoint.sh

@@ -2,9 +2,15 @@
 
 namespace App\Filament\Resources\Finance;
 
+use Filament\Schemas\Schema;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\Finance\TransactionResource\Pages\ListTransactions;
+use App\Filament\Resources\Finance\TransactionResource\Pages\CreateTransaction;
+use App\Filament\Resources\Finance\TransactionResource\Pages\EditTransaction;
 use App\Filament\Resources\Finance;
 use App\Models\Finance\Transaction;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -13,16 +19,16 @@ class TransactionResource extends Resource
 {
     protected static ?string $model = Transaction::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static ?string $navigationGroup = 'Portfolio';
+    protected static string | \UnitEnum | null $navigationGroup = 'Portfolio';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 //
             ]);
     }
@@ -36,12 +42,12 @@ class TransactionResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -56,9 +62,9 @@ class TransactionResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Finance\TransactionResource\Pages\ListTransactions::route('/'),
-            'create' => Finance\TransactionResource\Pages\CreateTransaction::route('/create'),
-            'edit' => Finance\TransactionResource\Pages\EditTransaction::route('/{record}/edit'),
+            'index' => ListTransactions::route('/'),
+            'create' => CreateTransaction::route('/create'),
+            'edit' => EditTransaction::route('/{record}/edit'),
         ];
     }
 }

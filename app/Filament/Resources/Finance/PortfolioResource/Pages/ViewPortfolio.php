@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Finance\PortfolioResource\Pages;
 
+use Filament\Actions\CreateAction;
 use App\Filament\Resources\Finance\PortfolioResource;
 use App\Filament\Resources\Finance\TransactionResource;
 use Filament\Actions;
@@ -10,7 +11,7 @@ use Illuminate\Contracts\Support\Htmlable;
 
 class ViewPortfolio extends ViewRecord
 {
-    protected static string $view = 'filament.resources.portfolio.pages.view-portfolio';
+    protected string $view = 'filament.resources.portfolio.pages.view-portfolio';
 
     protected static string $resource = PortfolioResource::class;
 
@@ -27,7 +28,7 @@ class ViewPortfolio extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make('createCategory')
+            CreateAction::make('createCategory')
                 ->label(__('Dodaj transakcje'))
                 ->icon('heroicon-o-plus')
                 ->url(fn () => TransactionResource::getUrl('create', ['portfolio_id' => $this->record->getKey()])),
