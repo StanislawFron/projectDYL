@@ -3,6 +3,8 @@
 namespace App\Filament\Resources\Finance\Portfolios\Pages;
 
 use App\Filament\Resources\Finance\Portfolios\PortfolioResource;
+use App\Filament\Resources\Finance\Portfolios\Widgets\DailyProfit;
+use App\Filament\Resources\Finance\Portfolios\Widgets\TotalProfit;
 use App\Filament\Resources\Finance\Transactions\TransactionResource;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ViewRecord;
@@ -11,6 +13,8 @@ use Illuminate\Contracts\Support\Htmlable;
 class ViewPortfolio extends ViewRecord
 {
     protected static string $resource = PortfolioResource::class;
+
+    protected string $view = 'filament.resources.portfolio.pages.view-portfolio';
 
     public function getBreadcrumb(): string
     {
@@ -28,15 +32,16 @@ class ViewPortfolio extends ViewRecord
             CreateAction::make('createCategory')
                 ->label(__('Dodaj transakcje'))
                 ->icon('heroicon-o-plus')
+                ->color('primary')
                 ->url(fn () => TransactionResource::getUrl('create', ['portfolio_id' => $this->record->getKey()])),
         ];
     }
 
-    protected function getViewData(): array
+    protected function getHeaderWidgets(): array
     {
-        return array_merge(parent::getViewData(), [
-            'relationManagers' => static::getResource()::getRelations(),
-            'activeRelationManager' => data_get(static::getResource()::getRelations(), 0),
-        ]);
+        return [
+            TotalProfit::class,
+            DailyProfit::class,
+        ];
     }
 }

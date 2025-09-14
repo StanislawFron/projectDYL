@@ -10,7 +10,7 @@ class TotalProfit extends LineChartWidget
 {
     public function getHeading(): string|Htmlable|null
     {
-        return new HtmlString('<h4 class="text-gray-500 font-medium">Zysk całkowity</h4>');
+        return new HtmlString('<h4 class="text-gray-500 font-medium">Wartość całkowita</h4>');
     }
 
     public function getDescription(): string|Htmlable|null
@@ -42,7 +42,7 @@ class TotalProfit extends LineChartWidget
             ],
             'datasets' => [
                 [
-                    'label' => 'Zysk całkowity',
+                    'label' => 'Wartość całkowita',
                     'data' => [0, 100, 500, 1000, 1500, 2200, 2100, 1900, 1400, 900, 1200, 1300, 1900],
                     'borderColor' => '#22c55e',
                     'backgroundColor' => 'rgba(34,197,94,0.2)',

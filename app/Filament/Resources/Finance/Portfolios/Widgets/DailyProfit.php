@@ -10,13 +10,13 @@ class DailyProfit extends LineChartWidget
 {
     public function getHeading(): string|Htmlable|null
     {
-        return new HtmlString('<h4 class="text-gray-500 font-medium">Zysk dzienny</h4>');
+        return new HtmlString('<h4 class="text-gray-500 font-medium">Zmiana dzienna</h4>');
     }
 
     public function getDescription(): string|Htmlable|null
     {
-        return new HtmlString('<h1 class="text-3xl font-semibold">102.06</h1>
-                <span class="text-green-500">(+0.57%)</span>');
+        return new HtmlString('<h1 class="text-3xl font-semibold">-102.06</h1>
+                <span class="text-red-500">(-0.57%)</span>');
     }
 
     /**
@@ -37,7 +37,7 @@ class DailyProfit extends LineChartWidget
             ],
             'datasets' => [
                 [
-                    'label' => 'Zysk całkowity',
+                    'label' => 'Zmiana dzienna',
                     'data' => [0, -20, -40, 10, 40, 20, 50, 102.06],
                     'borderColor' => '#22c55e',
                     'backgroundColor' => 'rgba(34,197,94,0.2)',

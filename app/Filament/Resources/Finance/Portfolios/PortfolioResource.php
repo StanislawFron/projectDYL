@@ -6,7 +6,6 @@ use App\Filament\Resources\Finance\Portfolios\Pages\CreatePortfolio;
 use App\Filament\Resources\Finance\Portfolios\Pages\EditPortfolio;
 use App\Filament\Resources\Finance\Portfolios\Pages\ListPortfolios;
 use App\Filament\Resources\Finance\Portfolios\Pages\ViewPortfolio;
-use App\Filament\Resources\Finance\Portfolios\RelationManagers\TransactionsRelationManager;
 use App\Models\Finance\Portfolio;
 use Filament\Resources\Resource;
 
@@ -40,13 +39,6 @@ class PortfolioResource extends Resource
             'create' => CreatePortfolio::route('/create'),
             'view' => ViewPortfolio::route('/{record}'),
             'edit' => EditPortfolio::route('/{record}/edit'),
-        ];
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            TransactionsRelationManager::class,
         ];
     }
 }

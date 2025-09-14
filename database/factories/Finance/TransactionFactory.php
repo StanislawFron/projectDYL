@@ -24,7 +24,7 @@ class TransactionFactory extends Factory
             'asset_id' => $this->faker->randomElement(Asset::all())->id,
             'name' => $this->faker->word(),
             'currency' => $this->faker->randomElement(Currency::cases()),
-            'volume' => $this->faker->randomFloat(2, 1, 1000),
+            'volume' => $this->faker->randomFloat(2, 1, 100),
             'value' => $this->faker->randomFloat(2, 1, 1000),
             'created_at' => now(),
             'updated_at' => now(),

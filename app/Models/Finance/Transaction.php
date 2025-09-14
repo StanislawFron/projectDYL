@@ -34,4 +34,8 @@ class Transaction extends Model
             default => $this->value * $this->volume * $currencyRate,
         };
     }
+
+    protected $casts = [
+        'date' => 'datetime',
+    ];
 }
